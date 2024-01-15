@@ -24,7 +24,7 @@ async def predict(data: list[AirQuality]):
     data_values = [[item.pm10, item.pm25, item.pm25_o3, item.pm25_no2] for item in data]
     scaled_data = scaler.transform(data_values)
 
-    feature_cols = [0, 1, 2, 3]
+    feature_cols = list(range(len(data_values[0])))
     window_size = 48
 
     X = create_sequences(scaled_data, window_size, feature_cols)
